@@ -1,0 +1,261 @@
+1.Plus Minus
+class Result {
+    public static void plusMinus(List<Integer> arr) {
+        float count1=0;
+        float count2=0;
+        float count3=0;
+        for(float i:arr){
+            if(i>0){
+                count1++;
+            }
+            if(i<0){
+                count2++;
+            }
+            if(i==0){
+                count3++;
+            }
+        }System.out.println(count1/arr.size());
+         System.out.println(count2/arr.size());
+         System.out.println(count3/arr.size());
+    }
+}
+
+
+
+2.Mini-Max Sum
+class Result {
+
+    public static void miniMaxSum(List<Integer> arr) {
+        long minsum=0;
+        long maxsum=0;
+        Collections.sort(arr);
+        int n=arr.size();
+        for(int i=0;i<n-1;i++){
+            minsum=minsum+arr.get(i);
+        }
+        for(int j=1;j<n;j++){
+            maxsum=maxsum+arr.get(j);
+        }
+        System.out.println(minsum+" "+maxsum);
+    }
+
+}
+
+
+3.Time Conversion
+class Result {
+
+    /*
+     * Complete the 'timeConversion' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING s as parameter.
+     */
+
+    public static String timeConversion(String s) {
+        int n=s.length();
+        if(s.substring(0,2).equals("12")&&s.substring(n-2).equals("AM"))
+            return "00"+s.substring(2,n-2);
+        if(s.substring(0,2).equals("12")&&s.substring(n-2).equals("PM"))
+            return s.substring(0,n-2);
+        if(s.substring(n-2).equals("PM")){
+            int a=Integer.parseInt(s.substring(0,2));
+            return (a+12)+s.substring(2,n-2);
+        }
+        
+        
+        return s.substring(0,n-2);
+     
+    }
+}
+
+
+4.Sparse Arrays
+class Result {
+    public static List<Integer> matchingStrings(List<String> strings, List<String> queries) {
+        int n=strings.size();
+        int m=queries.size();
+        int count=0;
+        List<Integer> list=new ArrayList<Integer>();
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if((queries.get(i)).equals(strings.get(j)))
+                    count+=1;
+                    
+            }list.add(count);
+            count=0;
+        }return list;
+    }
+}
+
+
+
+5.Lonely Integer
+class Result {
+    public static int lonelyinteger(List<Integer> a) {
+        int n=a.size();
+        int count=0;
+        while(n>1){
+        for(int i=0;i<n;i++){
+            count=0;
+            for(int j=0;j<n;j++){
+                if(a.get(i).equals(a.get(j)))
+                    count++;
+                    
+            }
+            if(count==1)
+            return a.get(i);
+        }
+            
+}
+return a.get(0);
+}
+}
+
+
+6.Flipping bits
+class Result {
+
+    /*
+     * Complete the 'flippingBits' function below.
+     *
+     * The function is expected to return a LONG_INTEGER.
+     * The function accepts LONG_INTEGER n as parameter.
+     */
+
+    public static long flippingBits(long n) {
+        long a=2;
+        for(int i=1;i<32;i++){
+            a=a*2;
+        }
+        
+        return (a-1)-n;
+
+    }
+
+}
+
+
+7.Diagonal Difference
+class Result {
+
+    public static int diagonalDifference(List<List<Integer>> arr) {
+       int sum1=0;
+        int sum2=0;
+        int i=0,j=0;
+        int n=arr.size();
+        while(i<n){
+            while(j<n){
+                sum1=sum1+arr.get(i).get(j);
+                j++;
+                i++;
+            }
+        }
+        int k=0,l=n-1;
+        while(k<n){
+            while(l>=0){
+                sum2=sum2+arr.get(k).get(l);
+                k++;
+                l--;
+            }
+        }
+        return Math.abs(sum1-sum2);
+    }
+
+}
+
+
+8.Counting Sort 1
+class Result {
+    public static List<Integer> countingSort(List<Integer> arr) {
+        int n=arr.size();
+        List<Integer> count=new ArrayList<Integer>();
+        for(int i=0;i<100;i++){
+            count.add(0);
+        }
+        for(int x:arr){
+            count.set(x,count.get(x)+1);
+        }
+        
+        return count;
+    }
+
+}
+
+
+9.Pangrams
+class Result {
+    public static String pangrams(String s) {
+           s= s.toUpperCase();
+        boolean val= true;
+        for(char ch='A';ch<='Z';ch++){
+            if(!s.contains(String.valueOf(ch))){
+                val=false;
+                break;
+            }
+        }
+        if(val==true)
+                return "pangram";
+        return "not pangram";
+    }
+}
+
+
+10.Permuting Two Arrays
+class Result {
+    public static String twoArrays(int k, List<Integer> A, List<Integer> B) {
+        Collections.sort(A);
+        Collections.sort(B);
+        int count=0;
+        for(int i=0;i<A.size();i++){
+            
+                if(A.get(i)+B.get(B.size()-1-i)<k){
+                    return "NO";
+                }
+            
+        }
+        return "YES";
+    }   
+
+}
+
+
+11.Subarray Division 1
+class Result {
+
+    public static int birthday(List<Integer> s, int d, int m) {
+        int numWays = 0, sum = 0;
+
+    for(int i = 0; i <= (s.size() - m); i++) {
+
+        for(int j = i; j < i + m; j++) {
+            sum += s.get(j);
+        }
+
+        if(sum == d) {
+            numWays++;
+        }
+
+        sum = 0;
+    }
+
+    return numWays; 
+}
+}
+
+
+12.XOR Strings 2
+public class Solution {
+
+    public static String stringsXOR(String s, String t) {
+        String res = new String("");
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i)==t.charAt(i))
+                res+="0";
+            else
+                res+="1";
+        }
+
+        return res;
+    }
+
